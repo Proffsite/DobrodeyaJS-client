@@ -1,7 +1,6 @@
 import React from 'react';
 import { IAnimal } from "../types/animal";
 import { useRouter } from "next/router";
-import { useActions } from "../hooks/useActions";
 
 interface AnimalItemProps {
     animal: IAnimal;
@@ -10,6 +9,11 @@ interface AnimalItemProps {
 
 const AnimalItem: React.FC<AnimalItemProps> = ({ animal, active = false }) => {
     const router = useRouter()
+    const onRemoveFromBasket = () => {
+        console.log("click");
+        // dispatch(removeFromBasket(animal._id));
+    }
+
 
     return (
 
@@ -19,8 +23,20 @@ const AnimalItem: React.FC<AnimalItemProps> = ({ animal, active = false }) => {
             </a>
             <div>{animal.name}</div>
             <div style={{ fontSize: 12, color: 'gray' }}>{animal.text}</div>
+            <button
+                className=""
+                onClick={onRemoveFromBasket}
+                type="button"
+            >
+                Удалить
+            </button>
         </div>
     );
 };
 
 export default AnimalItem;
+
+// export const getServerSideProps = wrapper.getServerSideProps(async (context) => {
+//     const dispatch = context.store.dispatch as NextThunkDispatch
+//     await dispatch(await animalsDelete(_id))
+// })

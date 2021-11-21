@@ -1,20 +1,19 @@
 import React from 'react';
-import MainLayout from '../../layouts/MainLayout';
+
 import { useTypedSelector } from "../../hooks/useTypedSelector";
 import { NextThunkDispatch, wrapper } from "../../store";
 import { useRouter } from "next/router";
-import AnimalList from "../../components/AnimalList";
-import { Dispatch } from "react";
-
-import { useActions } from "../../hooks/useActions";
-
 import { fetchAnimals } from "../../store/actions-creators/animal";
 
-import { IAnimal } from "../../types/animal";
+import AnimalList from "../../components/AnimalList";
+import MainLayout from '../../layouts/MainLayout';
+import { GetServerSideProps } from 'next';
 
 const Index = () => {
     const router = useRouter()
     const { animals, error } = useTypedSelector(state => state.animal)
+
+
 
     if (error) {
         return <MainLayout>
@@ -28,7 +27,7 @@ const Index = () => {
                 <button onClick={() => router.push('/animals/create')}>
                     Загрузить
                 </button>
-                 <AnimalList animals={animals} /> 
+                <AnimalList animals={animals} />
             </MainLayout>
 
         </>
@@ -37,7 +36,9 @@ const Index = () => {
 
 export default Index;
 
-export const getServerSideProps = wrapper.getServerSideProps(async ({ store }) => {
-    const dispatch = store.dispatch as NextThunkDispatch
-    await dispatch(await fetchAnimals())
+export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps(async (context) => {
+    const { store, query } = context;
+    const dispatch = store.dispatch as NextThunkDispatch;
+    console.log(query)
+    await dispatch(await fetchAnimals(query))
 })

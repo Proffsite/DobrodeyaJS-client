@@ -13,6 +13,7 @@ const Create = () => {
     const sex = useInput('')
     const text = useInput('')
     const age = useInput('')
+    const type = useInput('')
     const router = useRouter()
     const next = () => {
         if (activeStep !== 1) {
@@ -24,6 +25,7 @@ const Create = () => {
             formData.append('sex', sex.value)
             formData.append('age', age.value)
             formData.append('picture', picture)
+            formData.append('type', type.value)
             axios.post('http://localhost:5000/animals', formData)
                 .then(resp => router.push('/animals'))
                 .catch(e => console.log(e))
@@ -39,26 +41,39 @@ const Create = () => {
             <StepTracker activeStep={activeStep}>
                 {activeStep === 0 &&
                     <form>
-
+                        <p>ВВедите Имя</p>
                         <input type="text"
                             {...name}
                             style={{ marginTop: 10 }}
                         />
+                        <p>ВВедите пол (М, Ж)</p>
                         <input type="text"
                             {...sex}
                             style={{ marginTop: 10 }}
                         />
+                        <p>ВВедите Описание</p>
                         <textarea
                             type="text"
                             rows="3"
                             {...text}
                             style={{ marginTop: 10 }}
                         />
+                        <p>Введите примерный возраст</p>
                         <input type="text"
                             {...age}
                             style={{ marginTop: 10 }}
                         />
-
+                        {/* <input type="radio" id="huey" name="drone" {...type}
+                            checked />
+                        <label for="huey">CATS</label>
+                        <input type="radio" id="huey" name="drone" {...type}
+                            checked />
+                        <label for="huey">DOGS</label> */}
+                        <p>ВВедите вид животного (Кошка, Собака, Дома)</p>
+                        <input type="text"
+                            {...type}
+                            style={{ marginTop: 10 }}
+                        />
                     </form>
                 }
                 {activeStep === 1 &&

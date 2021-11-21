@@ -11,8 +11,10 @@ export const animalReducer = (state = initialState, action: AnimalAction): Anima
             return { ...state, error: action.payload }
         case AnimalActionTypes.FETCH_ANIMALS:
             return { error: '', animals: action.payload }
-        case AnimalActionTypes.DELETE_ANIMALS:
-            return state.filter((animals) => animals.id !== action.payload);
+        case AnimalActionTypes.ANIMALS_DELETE:
+            return { ...state, animals: state.animals.filter((animals) => animals.id !== action.payload) };
+        case AnimalActionTypes.ANIMALS_DELETE_ERROR:
+            return { ...state, error: action.payload }
         default:
             return state
     }

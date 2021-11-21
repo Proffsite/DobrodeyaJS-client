@@ -4,7 +4,7 @@ import { wrapper } from "../store";
 import 'bootstrap/dist/css/bootstrap.css';
 import "../css/customcss.scss";
 
-const WrappedApp: FC<AppProps> = ({ Component, pageProps }) => (
+const WrappedApp: FC<AppProps> = ({ Component, pageProps }: AppProps) => (
     <Component {...pageProps} />
 );
 

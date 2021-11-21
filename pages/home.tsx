@@ -1,15 +1,41 @@
+import { GetServerSideProps } from 'next';
+import { useRouter } from 'next/router';
 import React from 'react';
-import MainLayout from '../layouts/MainLayout';
 
-const Index = () => {
+
+import AnimalList from '../components/AnimalList';
+import { useTypedSelector } from '../hooks/useTypedSelector';
+import MainLayout from '../layouts/MainLayout';
+import { NextThunkDispatch, wrapper } from '../store';
+import { fetchAnimals } from '../store/actions-creators/animal';
+
+const Home = () => {
+
+    const router = useRouter()
+    const { animals, error } = useTypedSelector(state => state.animal)
+
+    if (error) {
+        return <MainLayout>
+            <h1>{error}</h1>
+        </MainLayout>
+    }
     return (
         <>
-            <MainLayout>
+            <MainLayout title={"Уже дома - Добродея"}>
                 Уже дома
+                <AnimalList animals={animals} />
             </MainLayout>
 
         </>
     );
 };
 
-export default Index;
+export default Home;
+
+
+export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps(async (context) => {
+    const { store, query } = context;
+    const dispatch = store.dispatch as NextThunkDispatch;
+    console.log(query)
+    await dispatch(await fetchAnimals(query))
+})

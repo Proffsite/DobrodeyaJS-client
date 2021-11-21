@@ -17,7 +17,8 @@ export interface AnimalState {
 export enum AnimalActionTypes {
     FETCH_ANIMALS = 'FETCH_ANIMALS',
     FETCH_ANIMALS_ERROR = 'FETCH_ANIMALS_ERROR',
-    DELETE_ANIMALS = 'DELETE_ANIMALS'
+    ANIMALS_DELETE = 'ANIMALS_DELETE',
+    ANIMALS_DELETE_ERROR = 'ANIMALS_DELETE_ERROR'
 }
 
 interface FetchAnimalsAction {
@@ -25,9 +26,14 @@ interface FetchAnimalsAction {
     payload: IAnimal[]
 }
 
-interface FetchAnimalsDeleteAction {
-    type: AnimalActionTypes.DELETE_ANIMALS;
-    payload: _id
+interface AnimalsDeleteAction {
+    type: AnimalActionTypes.ANIMALS_DELETE;
+    payload: number
+}
+
+interface AnimalsDeleteErrorAction {
+    type: AnimalActionTypes.ANIMALS_DELETE_ERROR;
+    payload: string
 }
 
 interface FetchAnimalsErrorAction {
@@ -35,4 +41,4 @@ interface FetchAnimalsErrorAction {
     payload: string
 }
 
-export type AnimalAction = FetchAnimalsAction | FetchAnimalsErrorAction | FetchAnimalsDeleteAction
+export type AnimalAction = FetchAnimalsAction | FetchAnimalsErrorAction | AnimalsDeleteAction | AnimalsDeleteErrorAction

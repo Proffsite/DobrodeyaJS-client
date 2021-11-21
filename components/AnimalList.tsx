@@ -7,7 +7,6 @@ interface AnimalListProps {
 }
 
 const AnimalList: React.FC<AnimalListProps> = ({ animals }) => {
-    console.log(animals)
     return (
         <div className="row">
 

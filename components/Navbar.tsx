@@ -6,9 +6,9 @@ import Link from 'next/link';
 
 const menuItemsLeft = [
     { text: 'О Приюте', href: '/' },
-    { text: 'Кошки', href: '/animals' },
-    { text: 'Собаки', href: '/animals' },
-    { text: 'Уже дома', href: '/home' }
+    { text: 'Кошки', href: '/animals?type=CAT' },
+    { text: 'Собаки', href: '/animals?type=DOGS' },
+    { text: 'Уже дома', href: '/home?type=HOME' }
 ]
 const menuItemsRight = [
     { text: 'Как помочь приюту?', href: '/help' },
