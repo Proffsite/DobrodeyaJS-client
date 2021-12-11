@@ -1,15 +1,16 @@
 import React from 'react';
+import HelpStatic from '../components/static/HelpStatic';
 import MainLayout from '../layouts/MainLayout';
 
-const Index = () => {
+const Help = () => {
     return (
         <>
             <MainLayout>
-                Хочу помочь!
+                <HelpStatic />
             </MainLayout>
 
         </>
     );
 };
 
-export default Index;
+export default Help;

@@ -9,7 +9,7 @@ import MainLayout from '../layouts/MainLayout';
 import { NextThunkDispatch, wrapper } from '../store';
 import { fetchAnimals } from '../store/actions-creators/animal';
 
-const Home = () => {
+const HomeStatic = () => {
 
 	const router = useRouter()
 	const { animals, error } = useTypedSelector(state => state.animal)
@@ -29,7 +29,7 @@ const Home = () => {
 	);
 };
 
-export default Home;
+export default HomeStatic;
 
 
 export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps(async (context) => {

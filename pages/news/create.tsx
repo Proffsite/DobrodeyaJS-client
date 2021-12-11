@@ -10,10 +10,7 @@ const Create = () => {
 	const [activeStep, setActiveStep] = useState(0)
 	const [picture, setPicture] = useState(null)
 	const name = useInput('')
-	const sex = useInput('')
 	const text = useInput('')
-	const age = useInput('')
-	const type = useInput('')
 	const router = useRouter()
 	const next = () => {
 		if (activeStep !== 1) {
@@ -22,12 +19,9 @@ const Create = () => {
 			const formData = new FormData()
 			formData.append('name', name.value)
 			formData.append('text', text.value)
-			formData.append('sex', sex.value)
-			formData.append('age', age.value)
 			formData.append('picture', picture)
-			formData.append('type', type.value)
-			axios.post('http://localhost:5000/animals', formData)
-				.then(resp => router.push('/animals'))
+			axios.post('http://localhost:5000/news', formData)
+				.then(resp => router.push('/news'))
 				.catch(e => console.log(e))
 		}
 	}
@@ -41,39 +35,18 @@ const Create = () => {
 			<StepTracker activeStep={activeStep}>
 				{activeStep === 0 &&
 					<form>
-						<p>ВВедите Имя
+						<p>Введите заглавие новости
 							<input type="text"
 								{...name}
 								style={{ marginTop: 10 }}
 							/></p>
-						<p>ВВедите пол (М, Ж)
-							<input type="text"
-								{...sex}
-								style={{ marginTop: 10 }}
-							/></p>
-						<p>ВВедите Описание</p>
+						<p>Введите текст новости</p>
 						<textarea
 							type="text"
 							rows="3"
 							{...text}
 							style={{ marginTop: 10 }}
 						/>
-						<p>Введите примерный возраст
-							<input type="text"
-								{...age}
-								style={{ marginTop: 10 }}
-							/></p>
-						{/* <input type="radio" id="huey" name="drone" {...type}
-                            checked />
-                        <label for="huey">CATS</label>
-                        <input type="radio" id="huey" name="drone" {...type}
-                            checked />
-                        <label for="huey">DOGS</label> */}
-						<p>ВВедите вид животного (Кошка, Собака, Дома)
-							<input type="text"
-								{...type}
-								style={{ marginTop: 10 }}
-							/></p>
 					</form>
 				}
 				{activeStep === 1 &&
