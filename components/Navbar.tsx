@@ -25,6 +25,7 @@ const Navbar: React.FC = () => {
 	return (
 		<>
 			<header>
+
 				<div className="container">
 					<div className="row nav_menu align-items-center">
 						<div className="col-sm-5">

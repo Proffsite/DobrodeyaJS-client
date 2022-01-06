@@ -104,8 +104,6 @@ a {
     		justify-content: space-around;
     		align-items: center;
     		padding: 10px 10px;
-    		background: #fff;
-    		border-radius: 10px;
 		}
 	  }
   }
@@ -131,6 +129,7 @@ button {
 // Footer theme
 
 footer {
+	position: relative;
 	z-index: 1;
 	border-top: 2px solid #caebff;
 	background: #f2faff;
@@ -224,9 +223,28 @@ footer {
 	}
 }
 
-.image-back {
-	background-image:url("/public/parus.png");
-	background-position: center; 
-	background-repeat: no-repeat; 
-	background-size: cover;
+.box{
+    position: absolute;
+    z-index: -1;
+    top: 0;
+	left: -12px;
+    width: 100%;
+    height: 100%;
+}
+
+.box-footer{
+	position: absolute;
+    z-index: -1;
+    top: 0;
+	left: 0;
+    width: 100%;
+    height: 100%;
+	img {
+		height: 245px !important;
+	}
+}
+
+.relat {
+	position: relative;
+	color: floralwhite;
 }

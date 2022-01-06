@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { useRouter } from "next/router";
 
 import logo from '../public/logosobaka.png';
+import BGImage from './BGimage';
 
 const menuItemsLeft = [
 	{ text: 'О Приюте', href: '/' },
@@ -22,6 +23,13 @@ const Footer: React.FC = () => {
 	const router = useRouter();
 	return (
 		<footer>
+			<div className="box-footer">
+				<Image
+					src={'/image_footer.jpg'}
+					alt="BGimage Madina"
+					layout='fill'
+				/>
+			</div>
 			<div className="container pt-5 border-bottom">
 				<div className="row">
 					<div className="col-md-3 col-sm-12 mb-3 text-center">

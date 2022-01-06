@@ -2,6 +2,7 @@ import React from 'react';
 import MainLayout from "../layouts/MainLayout";
 import Image from 'next/image';
 import { GetServerSideProps } from 'next';
+import dynamic from 'next/dynamic';
 
 
 import animal_img from '../public/main_animal.png';
@@ -13,8 +14,11 @@ import { fetchAnimals } from '../store/actions-creators/animal';
 import AnimalList from '../components/AnimalList';
 import { fetchNews } from '../store/actions-creators/new';
 import NewList from '../components/NewList';
+import BGImage from '../components/BGimage';
 
-
+const BgImage = dynamic(() => import("../components/BGimage"), {
+	ssr: false,
+});
 
 const Index = () => {
 	const { animals, error } = useTypedSelector(state => state.animal)
@@ -22,7 +26,7 @@ const Index = () => {
 
 	const NotHomeAnimal = animals.filter(item => item.type !== 'HOME')
 	const HomeAnimal = animals.filter(item => item.type == 'HOME')
-	// Спросить почему нельзя так добавить в вывод страницы animals.filter(item => item.type !== 'HOME')
+	// Спросить почему нельзя так добавить в вывод страницы animals.filter(item => item.type !== 'HOME' На сосисочных облаках мы, или на земле. Ты заходи если что,)
 
 	if (error) {
 		return <MainLayout>
@@ -48,8 +52,11 @@ const Index = () => {
 					<div className="col-sm-3 button">
 						<button className="ripple">Хочу помочь</button></div>
 				</div>
-				<div className="container pt-5 image-back">
+				<div className="container pt-5 relat">
 					<div className="row">
+						<div className="box">
+							<BGImage srcImage='/parus.png' />
+						</div>
 						<div className="col-md-6 col-sm-12">
 							<div className="title">Приют для животных “Добродея”</div>
 							<p>
@@ -105,11 +112,15 @@ const Index = () => {
 						</div>
 					</div>
 				</div>
+
 				<HelpStatic />
+
 				<h1>Ищут дом: </h1>
 				<AnimalList animals={animals.slice(0, 4)} />
+
 				<h1>Последние новости: </h1>
 				<NewList news={news.slice(0, 4)} />
+
 			</MainLayout>
 		</>
 	);
