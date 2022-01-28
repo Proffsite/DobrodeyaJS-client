@@ -1,6 +1,6 @@
 import * as PlayerActionCreators from './user'
 
 
-export default {
+export default PlayerActionCreators {
     ...PlayerActionCreators
 }

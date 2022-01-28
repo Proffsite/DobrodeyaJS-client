@@ -1,3 +1,4 @@
+
 export interface IAnimal extends mongoose.Document {
 	_id: ObjectId;
 	name: string;
@@ -7,6 +8,7 @@ export interface IAnimal extends mongoose.Document {
 	picture: string;
 	sex: string;
 	type: string;
+	category: string;
 }
 
 export interface AnimalState {

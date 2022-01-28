@@ -1,6 +1,6 @@
 module.exports = {
 	images: {
-		domains: ['source.unsplash.com'],
+		domains: ['localhost'],
 	},
 	reactStrictMode: true,
 }

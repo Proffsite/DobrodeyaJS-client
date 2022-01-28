@@ -10,9 +10,6 @@ const StepTracker: React.FC<StepTrackerProps> = ({ activeStep, children }) => {
 
 	const className = (step) =>
 		activeStep === step ? 'active' : step < activeStep ? 'complete' : '';
-
-
-	console.log(activeStep, "active step");
 	return (
 		<div className="container pb-5">
 			<div className="row pb-5">

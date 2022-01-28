@@ -1,5 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
+import sberFinance from '../../public/sber_finance.png';
+import meatPhoto from '../../public/meat_photo.png';
 
 const HelpStatic = () => {
 	return (
@@ -14,7 +16,7 @@ const HelpStatic = () => {
 					</h5>
 					<h1>
 						<Image
-							src="/../public/sber_finance.png"
+							src={sberFinance}
 							alt="SberIcon"
 							layout='fixed'
 							width={26}
@@ -32,7 +34,7 @@ const HelpStatic = () => {
 						в магазине "Мясной дворик" Оазис-Плаза
 					</p>
 					<Image
-						src="/../public/meat_photo.png"
+						src={meatPhoto}
 						alt="PhotoDvorik"
 						layout='responsive'
 						width='100'

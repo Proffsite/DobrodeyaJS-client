@@ -35,6 +35,5 @@ export default Home;
 export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps(async (context) => {
 	const { store, query } = context;
 	const dispatch = store.dispatch as NextThunkDispatch;
-	console.log(query)
 	await dispatch(await fetchAnimals(query))
 })

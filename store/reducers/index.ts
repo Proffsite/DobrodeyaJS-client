@@ -2,11 +2,13 @@ import { combineReducers } from "redux";
 import { HYDRATE } from "next-redux-wrapper";
 import { animalReducer } from "./animalReducer";
 import { newReducer } from './newReducer';
+import { userReducer } from './userReducer';
 
 
 const rootReducer = combineReducers({
 	animal: animalReducer,
-	new1: newReducer
+	new1: newReducer,
+	user: userReducer,
 })
 
 export const reducer = (state, action) => {

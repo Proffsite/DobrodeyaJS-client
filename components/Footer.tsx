@@ -2,9 +2,14 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from "next/router";
+import dynamic from 'next/dynamic';
 
 import logo from '../public/logosobaka.png';
-import BGImage from './BGimage';
+import BGImage from '../components/BGimage';
+
+const BgImage = dynamic(() => import("../components/BGimage"), {
+	ssr: false,
+});
 
 const menuItemsLeft = [
 	{ text: 'О Приюте', href: '/' },
@@ -23,13 +28,9 @@ const Footer: React.FC = () => {
 	const router = useRouter();
 	return (
 		<footer>
-			<div className="box-footer">
-				<Image
-					src={'/image_footer.jpg'}
-					alt="BGimage Madina"
-					layout='fill'
-				/>
-			</div>
+			{/* <div className="box-footer">
+		 		<BGImage srcImage='/image_footer.jpg' />
+		 	</div> */}
 			<div className="container pt-5 border-bottom">
 				<div className="row">
 					<div className="col-md-3 col-sm-12 mb-3 text-center">
@@ -70,8 +71,8 @@ const Footer: React.FC = () => {
 								</ul>
 							</div>
 							<div className="col-md-4 col-sm-6 col-6">
-								<li className="list-group-item bg-transparent border-0 p-0 mb-2"><a href="/stat-volonterom/">Стать волонтером</a></li>
-								<li className="list-group-item bg-transparent border-0 p-0 mb-2"><a href="/poleznye-stati/">Полезные статьи</a></li>
+								<li className="list-group-item bg-transparent border-0 p-0 mb-2"><Link href="/login"><a>Вход на сайт</a></Link></li>
+								<li className="list-group-item bg-transparent border-0 p-0 mb-2"><Link href="/register"><a>Регистрация</a></Link></li>
 
 								<div className="contacts">
 									<div>
@@ -92,7 +93,7 @@ const Footer: React.FC = () => {
 				</div>
 
 			</div>
-		</footer>
+		</footer >
 	);
 };
 

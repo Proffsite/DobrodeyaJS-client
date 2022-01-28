@@ -6,8 +6,8 @@ import { GetServerSideProps } from "next";
 
 
 import { IAnimal } from "../../types/animal";
-import MainLayout from "../../layouts/MainLayout";
 import { useInput } from "../../hooks/useInput";
+import MainLayout from '../../layouts/MainLayout';
 
 const AnimalPage = ({ serverAnimal }) => {
 	const [animal, setAnimal] = useState<IAnimal>(serverAnimal)

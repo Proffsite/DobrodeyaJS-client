@@ -13,9 +13,9 @@ interface AnimalItemProps {
 const AnimalItem: React.FC<AnimalItemProps> = ({ animal, active = false }) => {
 	const router = useRouter()
 	const dispatch = useDispatch()
-	const onRemoveFromBasket = () => {
-		dispatch(animalsDelete(animal._id));
-	}
+	// const onRemoveFromBasket = () => {
+	// 	dispatch(animalsDelete(animal._id));
+	// }
 
 
 	return (
@@ -29,13 +29,13 @@ const AnimalItem: React.FC<AnimalItemProps> = ({ animal, active = false }) => {
 			<div>Размещено:{animal.date}</div>
 			<div>{animal.name}</div>
 			<div style={{ fontSize: 12, color: 'gray' }}>{animal.text}</div>
-			<button
+			{/* <button
 				className=""
 				onClick={onRemoveFromBasket}
 				type="button"
 			>
 				Удалить
-			</button>
+			</button> */}
 		</div>
 	);
 };

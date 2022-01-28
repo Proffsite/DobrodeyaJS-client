@@ -8,6 +8,39 @@
 //     pause: boolean;
 // }
 
+export enum UserRoles {
+	ADMIN = 'admin',
+	USER = 'user',
+}
+
+export interface IUser extends mongoose.Document {
+	_id: ObjectId;
+	name: string;
+	role: UserRoles;
+}
+
+export interface UserState {
+	users: IUser[];
+	error: string;
+}
+
+export enum UserActionTypes {
+	FETCH_USERS = 'FETCH_USERS',
+	FETCH_USERS_ERROR = 'FETCH_USERS_ERROR'
+}
+
+interface FetchUsersAction {
+	type: UserActionTypes.FETCH_USERS;
+	payload: IUser[]
+}
+
+interface FetchUsersErrorAction {
+	type: UserActionTypes.FETCH_USERS_ERROR;
+	payload: string
+}
+
+export type UserAction = FetchUsersAction | FetchUsersErrorAction
+
 // export enum PlayerActionTypes {
 //     PLAY = "PLAY",
 //     PAUSE = "PAUSE",

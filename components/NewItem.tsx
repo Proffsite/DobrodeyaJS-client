@@ -13,9 +13,9 @@ interface NewItemProps {
 const NewItem: React.FC<NewItemProps> = ({ new1, active = false }) => {
 	const router = useRouter()
 	const dispatch = useDispatch()
-	const onRemoveFromBasket = () => {
-		dispatch(newsDelete(new1._id));
-	}
+	// const onRemoveFromBasket = () => {
+	// 	dispatch(newsDelete(new1._id));
+	// }
 	return (
 		<div className="col-lg-3 col-md-6 col-sm-12 my-3">
 			<div className="foto">
@@ -26,13 +26,13 @@ const NewItem: React.FC<NewItemProps> = ({ new1, active = false }) => {
 			<div>Размещено:{new1.date}</div>
 			<div>{new1.name}</div>
 			<div style={{ fontSize: 12, color: 'gray' }}>{new1.text}</div>
-			<button
+			{/* <button
 				className=""
 				onClick={onRemoveFromBasket}
 				type="button"
 			>
 				Удалить
-			</button>
+			</button> */}
 		</div>
 	);
 };

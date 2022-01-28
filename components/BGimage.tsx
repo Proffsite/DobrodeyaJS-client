@@ -47,7 +47,7 @@ const BGImage: React.FC<StepSrcImage> = ({ srcImage }) => {
 			<>
 				<Image
 					src={srcImage}
-					alt="BGimage Madina"
+					alt="BGimage"
 					width={width}
 					height={height}
 				/>

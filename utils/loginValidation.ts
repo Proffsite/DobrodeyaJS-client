@@ -1,6 +1,8 @@
 import * as yup from "yup";
 
 export const LoginFormSchema = yup.object({
-    login: yup.string().required('Логин обязательный'),
-    password: yup.string().min(6, 'Длина пароля должна быть более 6 символов').required('Пароль обязательный'),
+	email: yup.string().required('Электронная почта обязательна для заполнения'),
+	password: yup.string().min(8, 'Длина пароля должна быть более 8 символов').required('Пароль обязательный'),
 }).required();
+
+// Добавить уникальное имя, или не надо

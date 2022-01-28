@@ -6,9 +6,9 @@ import Link from 'next/link';
 
 const menuItemsLeft = [
 	{ text: 'О Приюте', href: '/' },
-	{ text: 'Кошки', href: '/animals?type=CAT' },
-	{ text: 'Собаки', href: '/animals?type=DOGS' },
-	{ text: 'Уже дома', href: '/home?type=HOME' }
+	{ text: 'Кошки', href: '/animals?keyword=Cats' },
+	{ text: 'Собаки', href: '/animals?keyword=Dogs' },
+	{ text: 'Уже дома', href: '/home?keyword=Home' }
 ]
 const menuItemsRight = [
 	{ text: 'Как помочь приюту?', href: '/help' },
@@ -16,9 +16,7 @@ const menuItemsRight = [
 	{ text: 'Новости', href: '/news' },
 	{ text: 'Контакты', href: '/contacts' }
 ]
-interface NavbarProps {
 
-}
 
 const Navbar: React.FC = () => {
 	const router = useRouter();

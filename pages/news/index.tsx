@@ -6,8 +6,8 @@ import { useTypedSelector } from "../../hooks/useTypedSelector";
 import { NextThunkDispatch, wrapper } from "../../store";
 import { fetchNews } from '../../store/actions-creators/new';
 
-import MainLayout from '../../layouts/MainLayout';
 import NewList from '../../components/NewList';
+import MainLayout from '../../layouts/MainLayout';
 
 const Index = () => {
 
@@ -20,16 +20,13 @@ const Index = () => {
 		</MainLayout>
 	}
 	return (
-		<>
-			<MainLayout title={"Новости - Добродея"}>
-				Новости
-				<button onClick={() => router.push('/news/create')}>
-					Добавить
-				</button>
-				<NewList news={news} />
-			</MainLayout>
-
-		</>
+		<MainLayout title={"Новости - Добродея"}>
+			Новости
+			<button onClick={() => router.push('/news/create')}>
+				Добавить
+			</button>
+			<NewList news={news} />
+		</MainLayout>
 	);
 };
 

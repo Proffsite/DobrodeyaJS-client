@@ -6,8 +6,8 @@ import { GetServerSideProps } from "next";
 
 
 import { INew } from "../../types/new";
-import MainLayout from "../../layouts/MainLayout";
 import { useInput } from "../../hooks/useInput";
+import MainLayout from '../../layouts/MainLayout';
 
 const NewPage = ({ serverNew }) => {
 	const [new1, setNew1] = useState<INew>(serverNew)

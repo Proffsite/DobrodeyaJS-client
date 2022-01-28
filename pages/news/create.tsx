@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import MainLayout from "../../layouts/MainLayout";
 import StepTracker from "../../components/StepTracker";
 import FileUpload from "../../components/FileUpload";
 import { useInput } from "../../hooks/useInput";
 import axios from "axios";
 import { useRouter } from "next/router";
+import MainLayout from '../../layouts/MainLayout';
 
 const Create = () => {
 	const [activeStep, setActiveStep] = useState(0)

@@ -10,12 +10,9 @@ import { fetchAnimals } from "../../store/actions-creators/animal";
 import AnimalList from "../../components/AnimalList";
 import MainLayout from '../../layouts/MainLayout';
 
-
 const Index = () => {
 	const router = useRouter()
 	const { animals, error } = useTypedSelector(state => state.animal)
-
-
 
 	if (error) {
 		return <MainLayout>
