@@ -1,16 +1,28 @@
-import { UserAction, UserActionTypes, UserState } from "../../types/user";
+import { UserAction, UserActionTypes } from "../../types/user";
+import { ResponseUser } from '../../utils/api/types';
+
+export interface UserState {
+	data?: string | null;
+	error: string;
+}
 
 const initialState: UserState = {
-	users: [],
+	data: null,
 	error: ''
 }
 
 export const userReducer = (state = initialState, action: UserAction): UserState => {
 	switch (action.type) {
-		case UserActionTypes.FETCH_USERS:
-			return { error: '', users: action.payload }
+		case UserActionTypes.SET_USERS_DATA:
+			return {
+				error: '',
+				data: action.payload,
+			}
 		case UserActionTypes.FETCH_USERS_ERROR:
-			return { ...state, error: action.payload }
+			return {
+				...state,
+				error: action.payload
+			}
 
 
 		// case PlayerActionTypes.PAUSE:

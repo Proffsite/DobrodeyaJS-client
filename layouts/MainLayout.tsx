@@ -8,12 +8,16 @@ import { fetchAnimals } from '../store/actions-creators/animal';
 import { fetchNews } from '../store/actions-creators/new';
 import { fetchUser } from '../store/actions-creators/user';
 import { NextThunkDispatch, wrapper } from '../store';
+import { useTypedSelector } from '../hooks/useTypedSelector';
 
 interface MainLayoutProps {
 	title?: string;
 	description?: string;
 	keywords?: string;
 }
+
+
+
 
 const MainLayout: React.FC<MainLayoutProps>
 	= ({
@@ -22,6 +26,7 @@ const MainLayout: React.FC<MainLayoutProps>
 		description,
 		keywords
 	}) => {
+
 		return (
 			<>
 				<Head>
@@ -44,11 +49,3 @@ const MainLayout: React.FC<MainLayoutProps>
 	};
 
 export default MainLayout;
-
-export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps(async (context) => {
-	const { store, query } = context;
-	const dispatch = store.dispatch as NextThunkDispatch;
-	await dispatch(await fetchAnimals(query))
-	await dispatch(await fetchNews(query))
-	await dispatch(await fetchUser())
-})

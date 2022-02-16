@@ -9,7 +9,7 @@ export const fetchUser = () => {
 		try {
 			const response = await axios.get('http://localhost:5000/login', {})
 			dispatch({
-				type: UserActionTypes.FETCH_USERS,
+				type: UserActionTypes.SET_USERS_DATA,
 				payload: response.data
 			})
 		} catch (e) {
@@ -18,5 +18,13 @@ export const fetchUser = () => {
 				payload: 'Произошла ошибка при получении информации о пользователе'
 			})
 		}
+	}
+}
+
+export const setUserData = (payload: string): UserAction => {
+	return {
+		type: UserActionTypes.SET_USERS_DATA,
+		payload
+
 	}
 }

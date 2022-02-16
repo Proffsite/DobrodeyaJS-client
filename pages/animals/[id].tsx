@@ -15,19 +15,6 @@ const AnimalPage = ({ serverAnimal }) => {
 	const username = useInput('')
 	const text = useInput('')
 
-	// const addComment = async () => {
-	//     try {
-	//         const response = await axios.post('http://localhost:5000/tracks/comment', {
-	//             username: username.value,
-	//             text: text.value,
-	//             trackId: track._id
-	//         })
-	//         setTrack({ ...track, comments: [...track.comments, response.data] })
-	//     } catch (e) {
-	//         console.log(e)
-	//     }
-	// }
-
 	return (
 		<MainLayout
 			title={"Приют Добродея, г.Белоярский - " + animal.name + " - " + animal.text}
@@ -58,31 +45,6 @@ const AnimalPage = ({ serverAnimal }) => {
 					</div>
 				</div>
 			</div>
-			{/* <h1>Комментарии</h1>
-            <Grid container>
-
-                <TextField
-                    label="Ваше имя"
-                    fullWidth
-                    {...username}
-                />
-                <TextField
-                    label="Комментарий"
-                    {...text}
-                    fullWidth
-                    multiline
-                    rows={4}
-                />
-                <Button onClick={addComment}>Отправить</Button>
-            </Grid>
-            <div>
-                {track.comments.map(comment =>
-                    <div>
-                        <div>Автор - {comment.username}</div>
-                        <div>Комментарий - {comment.text}</div>
-                    </div>
-                )}
-            </div> */}
 		</MainLayout>
 	);
 };

@@ -13,25 +13,19 @@ export enum UserRoles {
 	USER = 'user',
 }
 
-export interface IUser extends mongoose.Document {
-	_id: ObjectId;
-	name: string;
-	role: UserRoles;
-}
-
-export interface UserState {
-	users: IUser[];
-	error: string;
-}
+// export interface UserState {
+// 	users: IUser[];
+// 	error: string;
+// }
 
 export enum UserActionTypes {
-	FETCH_USERS = 'FETCH_USERS',
+	SET_USERS_DATA = 'SET_USERS_DATA',
 	FETCH_USERS_ERROR = 'FETCH_USERS_ERROR'
 }
 
 interface FetchUsersAction {
-	type: UserActionTypes.FETCH_USERS;
-	payload: IUser[]
+	type: UserActionTypes.SET_USERS_DATA;
+	payload: string;
 }
 
 interface FetchUsersErrorAction {

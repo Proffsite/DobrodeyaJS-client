@@ -3,6 +3,7 @@ import Image from 'next/image';
 import logo from '../public/logosobaka.png';
 import { useRouter } from "next/router";
 import Link from 'next/link';
+import { useTypedSelector } from '../hooks/useTypedSelector';
 
 const menuItemsLeft = [
 	{ text: 'О Приюте', href: '/' },
@@ -20,6 +21,8 @@ const menuItemsRight = [
 
 const Navbar: React.FC = () => {
 	const router = useRouter();
+
+	const userData = useTypedSelector(state => state.user.data);
 	return (
 		<>
 			<header>
@@ -59,6 +62,11 @@ const Navbar: React.FC = () => {
 										</Link>
 									</li>
 								))}
+								{
+									userData
+										? ''
+										: <li><Link href="/login"><a>Войти</a></Link></li>
+								}
 							</ul>
 						</div>
 					</div>
