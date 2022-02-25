@@ -2,11 +2,6 @@ import React from 'react';
 import Image from 'next/image';
 import dynamic from 'next/dynamic';
 import { NextPage } from 'next';
-import { GetServerSideProps } from 'next';
-import { parseCookies } from 'nookies';
-
-
-import { NextThunkDispatch, wrapper } from "../store";
 
 
 import animal_img from '../public/main_animal.png';
@@ -19,15 +14,19 @@ import BGImage from '../components/BGimage';
 import inPriut from './/../public/in_priut.png';
 import outPriut from '../public/out_priut.png';
 
+
+import { GetServerSideProps } from 'next';
 import { fetchAnimals } from '../store/actions-creators/animal';
 import { fetchNews } from '../store/actions-creators/new';
 import { fetchUser } from '../store/actions-creators/user';
+import { NextThunkDispatch, wrapper } from '../store';
+
+import { UserApi } from '../utils/api';
+import { parseCookies } from 'nookies';
 
 
 
 import MainLayout from '../layouts/MainLayout';
-import { join } from 'path/posix';
-import { UserApi } from '../utils/api';
 
 
 const BgImage = dynamic(() => import("../components/BGimage"), {
@@ -129,15 +128,29 @@ const Index: NextPage = () => {
 				<HelpStatic />
 
 				<h1>Ищут дом: </h1>
-				<AnimalList animals={animals.slice(0, 4)} />
+				{
+					animals && animals.length === 0 ?
+						<h5>В БД нет животных</h5>
+						:
+						<AnimalList animals={animals.slice(0, 4)} />
+				}
+
 
 				<h1>Последние новости: </h1>
-				<NewList news={news.slice(0, 4)} />
+				{
+					news && news.length === 0 ?
+						<h5>Новостей пока нет</h5>
+						:
+						<NewList news={news.slice(0, 4)} />
+				}
+
 			</MainLayout>
 		</>
 	);
 };
 export default Index;
+
+
 
 export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps(async (context) => {
 	const { store, query } = context;
@@ -148,7 +161,6 @@ export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps
 
 	try {
 		const { authToken } = parseCookies(context);
-
 		const userData = UserApi.getMe(authToken);
 	} catch (error) {
 		console.log(error);

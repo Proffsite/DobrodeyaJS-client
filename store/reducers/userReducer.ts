@@ -23,6 +23,12 @@ export const userReducer = (state = initialState, action: UserAction): UserState
 				...state,
 				error: action.payload
 			}
+		default:
+			return state
+
+	}
+}
+
 
 
 		// case PlayerActionTypes.PAUSE:
@@ -37,8 +43,3 @@ export const userReducer = (state = initialState, action: UserAction): UserState
 		// 	return { ...state, duration: action.payload }
 		// case PlayerActionTypes.SET_ACTIVE:
 		// 	return { ...state, active: action.payload, duration: 0, currentTime: 0 }
-		default:
-			return state
-
-	}
-}

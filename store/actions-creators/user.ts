@@ -21,10 +21,18 @@ export const fetchUser = () => {
 	}
 }
 
-export const setUserData = (payload: string): UserAction => {
+export const setUserData = (data: string): UserAction => {
 	return {
 		type: UserActionTypes.SET_USERS_DATA,
-		payload
+		payload: data
 
 	}
+
+	// export const setUserData = (data: string) => {
+	// 	return (dispatch: Dispatch<UserAction>) => {
+	// 		dispatch({
+	// 			type: UserActionTypes.SET_USERS_DATA,
+	// 			payload: data
+	// 		})
+	// 	}
 }

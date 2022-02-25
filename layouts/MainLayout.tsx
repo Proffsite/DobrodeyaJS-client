@@ -3,12 +3,6 @@ import Navbar from "../components/Navbar";
 import Head from "next/head";
 import Footer from '../components/Footer';
 
-import { GetServerSideProps, NextPage } from 'next';
-import { fetchAnimals } from '../store/actions-creators/animal';
-import { fetchNews } from '../store/actions-creators/new';
-import { fetchUser } from '../store/actions-creators/user';
-import { NextThunkDispatch, wrapper } from '../store';
-import { useTypedSelector } from '../hooks/useTypedSelector';
 
 interface MainLayoutProps {
 	title?: string;

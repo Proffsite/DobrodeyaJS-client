@@ -6,14 +6,11 @@ import { GetServerSideProps } from "next";
 
 
 import { IAnimal } from "../../types/animal";
-import { useInput } from "../../hooks/useInput";
 import MainLayout from '../../layouts/MainLayout';
 
 const AnimalPage = ({ serverAnimal }) => {
 	const [animal, setAnimal] = useState<IAnimal>(serverAnimal)
 	const router = useRouter()
-	const username = useInput('')
-	const text = useInput('')
 
 	return (
 		<MainLayout
@@ -29,7 +26,7 @@ const AnimalPage = ({ serverAnimal }) => {
 			<div className="container">
 				<div className="row">
 					<div className="col-md-5 col-sm-12 p-10 mb-3">
-						<img
+						<Image
 							src={'http://localhost:5000/' + animal.picture}
 							alt="Animals from priut Dobrodeya86"
 							width={525}

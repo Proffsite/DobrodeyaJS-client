@@ -14,6 +14,7 @@ const Home = () => {
 	const router = useRouter()
 	const { animals, error } = useTypedSelector(state => state.animal)
 
+
 	if (error) {
 		return <MainLayout>
 			<h1>{error}</h1>
