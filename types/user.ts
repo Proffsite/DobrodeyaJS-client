@@ -1,5 +1,7 @@
 // import {ITrack} from "./animal";
 
+import { ResponseUser } from '../utils/api/types';
+
 // export interface PlayerState {
 //     active: null | ITrack;
 //     volume: number;
@@ -25,7 +27,7 @@ export enum UserActionTypes {
 
 interface FetchUsersAction {
 	type: UserActionTypes.SET_USERS_DATA;
-	payload: string;
+	payload: ResponseUser;
 }
 
 interface FetchUsersErrorAction {

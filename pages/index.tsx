@@ -18,7 +18,7 @@ import outPriut from '../public/out_priut.png';
 import { GetServerSideProps } from 'next';
 import { fetchAnimals } from '../store/actions-creators/animal';
 import { fetchNews } from '../store/actions-creators/new';
-import { fetchUser } from '../store/actions-creators/user';
+import { fetchUser, setUserData } from '../store/actions-creators/user';
 import { NextThunkDispatch, wrapper } from '../store';
 
 import { UserApi } from '../utils/api';
@@ -157,11 +157,16 @@ export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps
 	const dispatch = store.dispatch as NextThunkDispatch;
 	await dispatch(await fetchAnimals(query))
 	await dispatch(await fetchNews(query))
-	await dispatch(await fetchUser())
 
 	try {
 		const { authToken } = parseCookies(context);
-		const userData = UserApi.getMe(authToken);
+		//const { data } = useTypedSelector(state => state.user)
+		//console.log(data, 'Data Index')
+		if (authToken) {
+			const userData = await UserApi.getMe(authToken);
+			await dispatch(await setUserData(userData));
+			console.log('_INDEX TSXTSXTSTXTSXT')
+		}
 	} catch (error) {
 		console.log(error);
 		return { props: {} }

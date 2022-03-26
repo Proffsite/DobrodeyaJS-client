@@ -49,6 +49,7 @@ const AnimalPage = ({ serverAnimal }) => {
 export default AnimalPage;
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
+	console.log(params, 'this is params MaTb Baswu')
 	const response = await axios.get('http://localhost:5000/animals/' + params.id)
 	return {
 		props: {

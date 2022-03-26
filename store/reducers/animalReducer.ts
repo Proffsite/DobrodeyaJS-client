@@ -8,7 +8,11 @@ const initialState: AnimalState = {
 export const animalReducer = (state = initialState, action: AnimalAction): AnimalState => {
 	switch (action.type) {
 		case AnimalActionTypes.FETCH_ANIMALS:
-			return { error: '', animals: action.payload }
+			return {
+				...state,
+				error: '',
+				animals: action.payload
+			}
 		case AnimalActionTypes.FETCH_ANIMALS_ERROR:
 			return { ...state, error: action.payload }
 

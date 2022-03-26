@@ -35,8 +35,19 @@ const Index = () => {
 
 export default Index;
 
-export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps(async (context) => {
-	const { store, query } = context;
-	const dispatch = store.dispatch as NextThunkDispatch;
-	await dispatch(await fetchAnimals(query))
-})
+// export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps(async (context) => {
+// 	const { store, query } = context;
+// 	const dispatch = store.dispatch as NextThunkDispatch;
+// 	await dispatch(await fetchAnimals(query))
+// })
+
+// export const getServerSideProps: GetServerSideProps = async ({ query }) => {
+
+// 	const response = await axios.get('http://localhost:5000/animals?keyword=' + query.keyword)
+// 	console.log('Response', response.data, 'Response')
+// 	return {
+// 		props: {
+// 			animals: response.data
+// 		}
+// 	}
+// }

@@ -3,6 +3,7 @@
 import { Dispatch } from "react";
 import { UserAction, UserActionTypes } from "../../types/user";
 import axios from "axios";
+import { ResponseUser } from '../../utils/api/types';
 
 export const fetchUser = () => {
 	return async (dispatch: Dispatch<UserAction>) => {
@@ -21,7 +22,7 @@ export const fetchUser = () => {
 	}
 }
 
-export const setUserData = (data: string): UserAction => {
+export const setUserData = (data: ResponseUser): UserAction => {
 	return {
 		type: UserActionTypes.SET_USERS_DATA,
 		payload: data

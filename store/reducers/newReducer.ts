@@ -8,7 +8,11 @@ const initialState: NewState = {
 export const newReducer = (state = initialState, action: NewAction): NewState => {
 	switch (action.type) {
 		case NewActionTypes.FETCH_NEWS:
-			return { error: '', news: action.payload }
+			return {
+				...state,
+				error: '',
+				news: action.payload
+			}
 		case NewActionTypes.FETCH_NEWS_ERROR:
 			return { ...state, error: action.payload }
 

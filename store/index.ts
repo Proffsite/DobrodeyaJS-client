@@ -9,6 +9,8 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 const makeStore: MakeStore<RootState>
 	= (context: Context) => createStore(reducer, composeWithDevTools(applyMiddleware(thunk)));
 
+
+
 // export an assembled wrapper
 export const wrapper = createWrapper<RootState>(makeStore, { debug: true });
 
